@@ -8,6 +8,11 @@ use Text::Quoted;
 
 Text::Decorator::Filter::Quoted - Mark up paragraphs of quoted text
 
+=head1 SYNOPSIS
+
+    $decorator->add_filter("Quoted", begin => '<div class="level%i">',
+                                     end   => '</div>');
+
 =head1 DESCRIPTION
 
 This filter uses the L<Text::Quoted> module to add quoting-level style
@@ -17,6 +22,9 @@ tags on a HTML representation of piece of text.
 
 sub filter_node {
     my ($class, $args, $node) = @_;
+    $args = { @{$args||[]} };
+    $args->{begin} ||= "<span class=\"quotedlevel%i\">";
+    $args->{end}   ||= "</span>";
 
     # There's a slight bug here; this filter will obliterate all HTML
     # markup made so far, which is something this module was designed to
@@ -27,21 +35,21 @@ sub filter_node {
     my @output;
 
     # Let's have a level one group
-    my $group = $class->_new_group(1);
+    my $group = $class->_new_group($args,1);
 
-    $group->{nodes} = [ $class->_traverse($structure, 1) ]; 
+    $group->{nodes} = [ $class->_traverse($args, $structure, 1) ]; 
     return $group, Text::Decorator::Node->new("\n") # Swallowed somewhere
 }
 
 
 sub _traverse {
-    my ($class, $stuff, $level) = @_;
+    my ($class, $args, $stuff, $level) = @_;
     my @output;
     for (@$stuff) {
         if (ref $_ eq "ARRAY") { 
             # New group
-            my $group = $class->_new_group($level + 1);
-            $group->{nodes} = [ $class->_traverse($_, $level + 1) ];
+            my $group = $class->_new_group($args, $level + 1);
+            $group->{nodes} = [ $class->_traverse($args, $_, $level + 1) ];
             push @output, $group;
         }
         elsif (ref $_ eq "HASH") {
@@ -52,11 +60,11 @@ sub _traverse {
 };
 
 sub _new_group {
-    my ($class, $level) = @_;
+    my ($class, $args, $level) = @_;
     my $group = Text::Decorator::Group->new();
     $group->{notes}->{level} = $level;
-    $group->{representations}{html}{pre} = "<span class=\"quotedlevel$level\">";
-    $group->{representations}{html}{post} = "</span>";
+    $group->{representations}{html}{pre} = sprintf($args->{begin}, $level);
+    $group->{representations}{html}{post} = sprintf($args->{end}, $level);
     return $group;
 }
 

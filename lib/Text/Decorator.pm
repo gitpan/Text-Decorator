@@ -4,7 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 use Carp;
-our $VERSION = '1.1';
+our $VERSION = '1.2';
 
 =head1 NAME
 
@@ -48,7 +48,7 @@ sub new {
     $self->add_filter("EscapeHTML" => @arguments);
 
 This adds a new filter onto the queue of filters which will be applied
-to this 
+to this decorator; returns the decorator object.
 
 =cut
 
@@ -57,6 +57,7 @@ sub add_filter {
     $filter = "Text::Decorator::Filter::$filter" unless $filter =~ /::/;
     $filter->require or croak "Can't use filter $filter";
     push @{$self->{filters}}, {filter => $filter, args => [@args]};
+    return $self;
 }
 
 =head2 format_as
