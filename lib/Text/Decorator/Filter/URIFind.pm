@@ -2,6 +2,7 @@ package Text::Decorator::Filter::URIFind;
 use Carp;
 use strict;
 use Text::Decorator::Group;
+use Text::Decorator::Node;
 use base 'Text::Decorator::Filter';
 
 =head1 NAME
@@ -22,14 +23,50 @@ sub filter_node {
     my $urifind = shift(@$args) || "URI::Find";
     $urifind->require or croak "Couldn't load $urifind";
 
-    my $finder = $urifind->new(sub{
-         my ($uri, $orig_uri) = @_;
-         return qq#<a href="$uri">$orig_uri</a>#;
-                 });
+    my $uriRe = sprintf '(?:%s|%s)', $urifind->uri_re, $urifind->schemeless_uri_re;
+
     my $orig = $node->format_as("html");
-    $finder->find(\$orig);
-    $node->{representations}{html} = $orig;
-    return $node;
+    return $node unless $orig =~ /$uriRe/;
+
+    my $group = Text::Decorator::Group->new();
+    $group->{representations}{text}{pre} = $node->format_as("text");
+    $group->{representations}{html}{pre} = "";
+    $group->{representations}{text}{post} = "";
+    $urifind = $urifind->new;
+    while ($orig =~ s{(.*?)(<$uriRe>|$uriRe)}{}) {
+        my $orig_match = $urifind->decruft($2);
+        $class->_add_text_node($group, $1.$urifind->{start_cruft});
+        if( my $uri = $urifind->_is_uri(\$orig_match) ) { # Its a URI.
+            $class->_add_uri_group($group, $uri, $orig_match);
+        }
+        else {                        # False alarm.
+            $class->_add_text_node($group, $orig_match);
+        }
+        $class->_add_text_node($group, $urifind->{end_cruft})
+            if $urifind->{end_cruft};
+    }
+    $class->_add_text_node($group, $orig);
+
+    return $group;
+}
+
+sub _add_text_node {
+    my ($class, $group, $text) = @_;
+    my $node = Text::Decorator::Node->new(""); 
+    # Text representation is provided by group
+    $node->{representations}{html} = $text;
+    push @{$group->{nodes}}, $node;
+}
+
+sub _add_uri_group {
+    my ($class, $group, $uri, $text) = @_;
+    my $node = Text::Decorator::Node->new(""); 
+    $node->{representations}{html} = $text;
+
+    my $subgroup = Text::Decorator::Group->new($node);
+    $subgroup->{representations}{html}{pre} = "<a href=\"$uri\">";
+    $subgroup->{representations}{html}{post} = "</a>";
+    push @{$group->{nodes}}, $subgroup;
 }
 
 1;

@@ -4,7 +4,7 @@ use 5.006;
 use strict;
 use warnings;
 use Carp;
-our $VERSION = '1.2';
+our $VERSION = '1.3';
 
 =head1 NAME
 
@@ -89,6 +89,8 @@ terms as Perl itself.
 =head1 AUTHOR
 
 Copyright (C) 2003, Simon Cozens C<simon@kasei.com>
+
+Copyright (C) 2004, Simon Cozens C<simon@cpan.org>
 
 =head1 SEE ALSO
 
