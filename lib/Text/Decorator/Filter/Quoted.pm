@@ -55,7 +55,7 @@ sub _new_group {
     my ($class, $level) = @_;
     my $group = Text::Decorator::Group->new();
     $group->{notes}->{level} = $level;
-    $group->{representations}{html}{pre} = "<span class=\"quoted$level\">";
+    $group->{representations}{html}{pre} = "<span class=\"quotedlevel$level\">";
     $group->{representations}{html}{post} = "</span>";
     return $group;
 }

@@ -1,0 +1,19 @@
+MANIFEST
+text-dec.pool
+lib/Text/Decorator.pm
+lib/Text/Decorator/Node.pm
+lib/Text/Decorator/Group.pm
+lib/Text/Decorator/Filter.pm
+lib/Text/Decorator/Filter/Quoted.pm
+lib/Text/Decorator/Filter/Test.pm
+lib/Text/Decorator/Filter/TTBridge.pm
+lib/Text/Decorator/Filter/URIFind.pm
+t/1.t
+t/2.t
+t/3.t
+t/4.t
+t/quoted.t
+t/ttbridge.t
+t/urifind.t
+Makefile.PL
+META.yml                                Module meta-data (added by MakeMaker)

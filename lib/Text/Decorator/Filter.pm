@@ -46,10 +46,10 @@ sub filter {
     my @newnodes;
     for my $node (@nodelist) {
         confess "Dead node in nodelist!" unless $node;
-        push @newnodes, $class->_do_filter($args, $node);
         if ($node->isa("Text::Decorator::Group")) {
-            $class->filter($node->nodes);
+            $node->{nodes} = [$class->filter($args, $node->nodes)];
         }
+        push @newnodes, $class->_do_filter($args, $node);
     }
     return @newnodes;
 }
@@ -77,6 +77,7 @@ sub _do_filter {
     if ($class->can("filter_node") and $node->isa("Text::Decorator::Node")) { 
         return $class->filter_node($args, $node);
     }
+    return $node;
 }
 
 1;
