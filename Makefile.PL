@@ -1,11 +1,12 @@
-use 5.006;
-use ExtUtils::MakeMaker;
-WriteMakefile(
-    'NAME'              => 'Text::Decorator',
-    'VERSION_FROM'      => 'lib/Text/Decorator.pm',
-    'PREREQ_PM'         => {
-        URI::Find => 0, # Suggested
-        Template  => 0, # Also suggested
-        UNIVERSAL::require => 0
-    },
-);
+#!/usr/bin/perl
+# This Makefile.PL creates a pass-through Makefile that simply calls
+# the equivalent Module::Build methods for each make target.  See the
+# documentation for Module::Build::Compat for more information.
+
+use strict;
+use lib qw(lib);
+use Module::Build::Compat;
+
+Module::Build::Compat->run_build_pl(args => \@ARGV);
+Module::Build::Compat->write_makefile();
+
