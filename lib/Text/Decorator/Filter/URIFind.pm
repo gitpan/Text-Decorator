@@ -33,7 +33,7 @@ sub filter_node {
     $group->{representations}{html}{pre} = "";
     $group->{representations}{text}{post} = "";
     $urifind = $urifind->new;
-    while ($orig =~ s{(.*?)(<$uriRe>|$uriRe)}{}) {
+    while ($orig =~ s{(.*?)(<$uriRe>|$uriRe)}{}sm) {
         my $orig_match = $urifind->decruft($2);
         $class->_add_text_node($group, $1.$urifind->{start_cruft});
         if( my $uri = $urifind->_is_uri(\$orig_match) ) { # Its a URI.
