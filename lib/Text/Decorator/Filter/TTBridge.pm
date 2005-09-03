@@ -20,6 +20,8 @@ Text::Decorator::Filter::TTBridge - Use Template Toolkit filters
 
 =head1 DESCRIPTION
 
+=head2 filter_node 
+
 This bridge allows Text::Decorator to make use of Template Toolkit's
 standard filters. 
 

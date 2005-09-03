@@ -11,9 +11,15 @@ Text::Decorator::Filter - Base class for text decorator filters
 
 =head1 DESCRIPTION
 
-This is the base class that all filters should inherit from. It provides
-the all-important C<filter> method that you really don't want to
-implement yourself. Instead, you should provide one of these methods:
+This is the base class that all filters should inherit from. 
+
+=head1 METHODS 
+
+=head2 filter 
+
+This base class provides the all-important C<filter> method that you
+really don't want to implement yourself. Instead, you should provide
+one of these methods:
 
 =head2 filter_text
 

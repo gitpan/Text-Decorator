@@ -8,7 +8,7 @@ use warnings;
 use Carp;
 use UNIVERSAL::require;
 
-our $VERSION = '1.5';
+our $VERSION = '1.6';
 
 =head1 NAME
 
@@ -33,6 +33,12 @@ links if the text is exported as HTML.
 	$self->new($text)
 
 Creates a new Text::Decorator instance.
+
+=head2 nodeclass
+
+The class we will use for our nodes. This defaults to
+Text::Decorator::Node, but if you want to subclass that to change its
+behaviour, then you need to override this.
 
 =cut
 
@@ -97,12 +103,17 @@ Current maintainer: Tony Bowden
 Please direct all correspondence regarding this module to:
   bug-Text-Decorator@rt.cpan.org
 
-=head1 LICENSE 
+=head1 COPYRIGHT AND LICENSE
 
-This module is free software, and may be distributed under the same
-terms as Perl itself.
+	Copyright (C) 2003-4 Simon Cozens, 2004-5 Tony Bowden 
 
-Copyright (C) 2003-4 Simon Cozens, 2004- Tony Bowden 
+  This program is free software; you can redistribute it and/or modify it under
+  the terms of the GNU General Public License; either version 2 of the License,
+  or (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.
 
 =head1 SEE ALSO
 

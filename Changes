@@ -1,5 +1,8 @@
 Revision history for Text::Decorator
 
+1.6 Sat Sep  3 21:55:58 UTC 2005
+	- Document changing the nodeclass
+
 1.50 Sun Oct 10 2004
 	- Tony Bowden took over maintainership
 

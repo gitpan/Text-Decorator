@@ -1,9 +1,7 @@
---- #YAML:1.0
+---
 name: Text-Decorator
-version: 1.5
-author:
-  - 'Original author: Simon Cozens'
-  - 'Current maintainer: Tony Bowden'
+version: 1.6
+author: ~
 abstract: Apply a chain of filters to text
 license: perl
 requires:
@@ -16,7 +14,7 @@ build_requires:
 provides:
   Text::Decorator:
     file: lib/Text/Decorator.pm
-    version: 1.5
+    version: 1.6
   Text::Decorator::Filter:
     file: lib/Text/Decorator/Filter.pm
   Text::Decorator::Filter::Quoted:
@@ -31,4 +29,4 @@ provides:
     file: lib/Text/Decorator/Group.pm
   Text::Decorator::Node:
     file: lib/Text/Decorator/Node.pm
-generated_by: Module::Build version 0.25
+generated_by: Module::Build version 0.26

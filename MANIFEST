@@ -11,10 +11,13 @@ lib/Text/Decorator/Node.pm
 Makefile.PL
 MANIFEST			This list of files
 META.yml
+README
 t/1.t
 t/2.t
 t/3.t
 t/4.t
+t/pod-coverage.t
+t/pod.t
 t/quoted.t
 t/ttbridge.t
 t/urifind.t

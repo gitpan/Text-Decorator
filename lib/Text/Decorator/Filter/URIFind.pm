@@ -14,6 +14,8 @@ Text::Decorator::Filter::URIFind - Turn URLs into links
 
 =head1 DESCRIPTION
 
+=head2 filter_node 
+
 This filter uses the L<URI::Find> module to mark up URLs as links. 
 You can also pass a classname as an argument to this filter, if you
 prefer using C<URI::Find::Schemeless> or whatever.

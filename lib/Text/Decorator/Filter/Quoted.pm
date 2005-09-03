@@ -18,6 +18,8 @@ Text::Decorator::Filter::Quoted - Mark up paragraphs of quoted text
 
 =head1 DESCRIPTION
 
+=head2 filter_node 
+
 This filter uses the L<Text::Quoted> module to add quoting-level style
 tags on a HTML representation of piece of text. 
 
