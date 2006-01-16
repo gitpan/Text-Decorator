@@ -38,7 +38,7 @@ sub filter_node {
 	$group->{representations}{text}{pre}  = $node->format_as("text");
 	$group->{representations}{html}{pre}  = "";
 	$group->{representations}{text}{post} = "";
-	$urifind                              = $urifind->new;
+	$urifind                              = $urifind->new(sub {});
 	while ($orig =~ s{(.*?)(<$uriRe>|$uriRe)}{}sm) {
 		my $orig_match = $urifind->decruft($2);
 		$class->_add_text_node($group, $1 . $urifind->{start_cruft});

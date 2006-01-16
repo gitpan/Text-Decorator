@@ -1,5 +1,9 @@
 Revision history for Text::Decorator
 
+1.65 Mon Jan 16 11:30:04 UTC 2006
+	- New versions of URI::Find require a callback to be passed to new()
+	  Work around this in by passing URIFind filter an empty subref.(RT#15683)
+
 1.6 Sat Sep  3 21:55:58 UTC 2005
 	- Document changing the nodeclass
 

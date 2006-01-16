@@ -8,7 +8,7 @@ use warnings;
 use Carp;
 use UNIVERSAL::require;
 
-our $VERSION = '1.6';
+our $VERSION = '1.65';
 
 =head1 NAME
 
@@ -23,8 +23,8 @@ Text::Decorator -  Apply a chain of filters to text
 
 Text::Decorator is a framework for marking up plain text into various
 formats by applying a chain of filters. For instance, you might apply
-a URI-finding filter which will cause URIs in text to be presented as
-links if the text is exported as HTML.
+a filter which will cause URIs in text to be presented as links if the
+text is exported as HTML.
 
 =head1 METHODS
 
@@ -37,8 +37,8 @@ Creates a new Text::Decorator instance.
 =head2 nodeclass
 
 The class we will use for our nodes. This defaults to
-Text::Decorator::Node, but if you want to subclass that to change its
-behaviour, then you need to override this.
+L<Text::Decorator::Node>, but if you want to subclass that to change
+its behaviour, then you need to override this.
 
 =cut
 
@@ -105,7 +105,7 @@ Please direct all correspondence regarding this module to:
 
 =head1 COPYRIGHT AND LICENSE
 
-	Copyright (C) 2003-4 Simon Cozens, 2004-5 Tony Bowden 
+	Copyright (C) 2003-4 Simon Cozens, 2004-6 Tony Bowden 
 
   This program is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License; either version 2 of the License,

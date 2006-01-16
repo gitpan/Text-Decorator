@@ -1,6 +1,6 @@
 ---
 name: Text-Decorator
-version: 1.6
+version: 1.65
 author: ~
 abstract: Apply a chain of filters to text
 license: perl
@@ -14,7 +14,7 @@ build_requires:
 provides:
   Text::Decorator:
     file: lib/Text/Decorator.pm
-    version: 1.6
+    version: 1.65
   Text::Decorator::Filter:
     file: lib/Text/Decorator/Filter.pm
   Text::Decorator::Filter::Quoted:

@@ -8,8 +8,8 @@ SYNOPSIS
 DESCRIPTION
     Text::Decorator is a framework for marking up plain text into various
     formats by applying a chain of filters. For instance, you might apply a
-    URI-finding filter which will cause URIs in text to be presented as
-    links if the text is exported as HTML.
+    filter which will cause URIs in text to be presented as links if the
+    text is exported as HTML.
 
 METHODS
   new
@@ -45,7 +45,7 @@ BUGS and QUERIES
     bug-Text-Decorator@rt.cpan.org
 
 COPYRIGHT AND LICENSE
-            Copyright (C) 2003-4 Simon Cozens, 2004-5 Tony Bowden 
+            Copyright (C) 2003-4 Simon Cozens, 2004-6 Tony Bowden 
 
       This program is free software; you can redistribute it and/or modify it under
       the terms of the GNU General Public License; either version 2 of the License,
